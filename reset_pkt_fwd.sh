@@ -18,14 +18,14 @@
 IOT_SK_GWID_UPDATE=true
 
 # The reset pin of SX1301 is wired with RPi GPIO2
-IOT_SK_SX1301_RESET_PIN=7
+IOT_SK_SX1301_RESET_PIN=17
 
 WAIT_GPIO() {
     sleep 1
 }
 
 iot_sk_init() {
-    # setup GPIO 7
+    # setup GPIO 17
     echo "$IOT_SK_SX1301_RESET_PIN" > /sys/class/gpio/export; WAIT_GPIO
 
     # set GPIO 17 as output
@@ -40,7 +40,7 @@ iot_sk_init() {
 }
 
 iot_sk_term() {
-    # cleanup GPIO 7
+    # cleanup GPIO 17
     if [ -d /sys/class/gpio/gpio$IOT_SK_SX1301_RESET_PIN ]
     then
         echo "$IOT_SK_SX1301_RESET_PIN" > /sys/class/gpio/unexport; WAIT_GPIO
